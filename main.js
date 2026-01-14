@@ -9,14 +9,10 @@ class GraphPoints {
 		for (let i = 0; i < 8; i++) {
 			for (let j = 0; j < 8; j++) {
 				let tempArray = [];
-				for (let k = i - 1; k < i + 2; k++) {
-					if (k < 0 || k > 7) continue;
-					for (let l = j - 1; l < j + 2; l++) {
-						if (l < 0 || l > 7) continue;
-						else if (k === i && l === j) continue;
-						else tempArray.push([k, l]);
-					}
-				}
+				if (i - 1 >= 0) tempArray.push(i - 1, j);
+				if (i + 1 <= 7) tempArray.push(i + 1, j);
+				if (j - 1 >= 0) tempArray.push(i, j - 1);
+				if (j + 1 <= 7) tempArray.push(i, j + 1);
 				mapObject.set([i, j], tempArray);
 			}
 		}
