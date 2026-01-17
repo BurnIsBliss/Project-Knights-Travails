@@ -3,6 +3,7 @@ class GraphPoints {
 		this.listOfEdges = this.listCreation();
 	}
 
+	// This function is used to created the graph, I've created the graph using all possible moves from each vertex.
 	listCreation = () => {
 		let mapObject = new Map();
 		for (let i = 0; i < 8; i++) {
@@ -30,6 +31,7 @@ class GraphPoints {
 		return mapObject;
 	};
 
+	// This function traverses the graph and finds the path to the 'end' vertex.
 	knightMoves(start, end) {
 		let visitedNodes = [],
 			queue = [],
@@ -53,6 +55,7 @@ class GraphPoints {
 		this.printOutput(visitedNodes, startCopy, end);
 	}
 
+	// This function calculates the shortest path from the visitedNodes array, and displays the content as per the requirement.
 	printOutput(array, start, end) {
 		let movesArray = [end];
 		array.reverse();
