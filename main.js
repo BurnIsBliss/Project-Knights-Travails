@@ -1,6 +1,5 @@
 class GraphPoints {
 	constructor() {
-		console.log("Graph vertices are initialized.");
 		this.listOfEdges = this.listCreation();
 	}
 
@@ -42,12 +41,25 @@ class GraphPoints {
 		// console.log(typeof key, typeof [7, 7], key);
 		// // if (key === [7, 7]) print(true);
 		console.log(this.listOfEdges);
-		console.log(this.listOfEdges.get(key));
+		// console.log(this.listOfEdges.get(key));
 		// for (const l in this.listOfEdges.keys()) if (l === key) console.log(l);
 	}
 
 	knightMoves(start, end) {
+		// Need to add base condition if wrong co-ordinates are given
 		let totalMoves = 0;
+		let visitedNodes = [],
+			queue = [];
+		start = `[${start[0]}, ${start[1]}]`;
+		end = `[${end[0]}, ${end[1]}]`;
+		while (start !== end) {
+			visitedNodes.push(start);
+			for (let value of this.listOfEdges.get(start)) {
+				if (!visitedNodes.includes(value)) queue.push(value);
+			}
+			start = queue.shift();
+		}
+		console.log(visitedNodes);
 	}
 }
 
